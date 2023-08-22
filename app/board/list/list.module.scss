@@ -1,0 +1,21 @@
+.item {
+    margin-top: 20px;
+    color: #eee;
+    background-color: #111111;
+    box-sizing: border-box;
+    border-bottom: 1px solid #464646;
+
+    .contentWrapper {
+        .post {
+            padding: 16px 0;
+            border-bottom: 1px solid #464646;
+
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            margin: 0 10px;
+            color: #EEEEEE;
+        }
+    }
+}
