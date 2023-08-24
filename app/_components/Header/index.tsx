@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import styles from '/public/styles/header.module.scss';
-
+import styles from './header.module.scss';
 type Props = {};
 
 function Header({ }: Props) {

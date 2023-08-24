@@ -1,22 +1,25 @@
 import Link from "next/link"
 import styles from './list.module.scss'
-export default function page({ children }: { children: React.ReactNode }) {
+import { timeFromToday } from '~/app/_utils/dateFormat'
+export default async function List({ children }: { children: React.ReactNode }) {
+    const data = await fetch('http://localhost:9999/boards', { cache: 'no-store' }).then(res => res.json())
     return (
         <div className=''>
+            <div className={styles.hello}>hello</div>
             <div className={styles.item} key={1}>
                 <ul>
-                    {[1, 2, 3].map((v, idx) => (
+                    {data.map((v: any, idx: number) => (
                         <Link
                             href={
-                                ''
+                                `/board/detail/${v.id}`
                             }
-                            key={1}
+                            key={v.id}
                             className={styles.contentWrapper}
                         >
                             <li className={styles.post}>
-                                타이틀
+                                {v.title}
                                 <div className={styles.name}>
-                                    닉네임
+                                    {timeFromToday(v.date)}
                                 </div>
                             </li>
                         </Link>

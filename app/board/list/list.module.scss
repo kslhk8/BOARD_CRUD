@@ -1,9 +1,12 @@
 .item {
+    ul {
+        padding: 0;
+    }
+
     margin-top: 20px;
     color: #eee;
     background-color: #111111;
     box-sizing: border-box;
-    border-bottom: 1px solid #464646;
 
     .contentWrapper {
         .post {

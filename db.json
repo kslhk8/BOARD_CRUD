@@ -1,0 +1,31 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "content": "it is json-server",
+      "date": "2023-08-24T06:49:43.022Z"
+    },
+    {
+      "title": "test",
+      "content": "test중입니다.",
+      "date": "2023-08-24T07:12:07.281Z",
+      "id": 3
+    },
+    {
+      "title": "check",
+      "content": "check",
+      "date": "2023-08-24T07:16:32.372Z",
+      "id": 4
+    },
+    {
+      "title": "test",
+      "content": "test",
+      "date": "2023-08-24T07:17:53.745Z",
+      "id": 5
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
