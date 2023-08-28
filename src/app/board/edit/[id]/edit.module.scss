@@ -1,0 +1,125 @@
+.border {
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: black;
+    }
+}
+
+.container {
+    width: 664px;
+    height: 820px;
+    padding-bottom: 124px;
+
+    .header {
+        position: relative;
+        @extend .border;
+
+        .title {
+            margin: 0;
+            padding: 0px 0px 18px;
+            font-size: 32px;
+            font-weight: 400;
+            line-height: 32px;
+        }
+    }
+
+    .subTitle {
+        margin-top: 20px;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .boardItem {
+        margin: 24px 0;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 24px;
+
+        &:first-child {
+            margin-top: 16px;
+        }
+    }
+
+    .contentItems {
+        height: 238px;
+    }
+
+    .submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 47px;
+        background: none;
+        outline: none;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        transition: 300ms;
+        //draggable 방지
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 32px;
+    }
+
+    .submit.active {
+        cursor: pointer;
+        border-color: black;
+        color: black;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        background: none;
+        border: none;
+        height: 40px;
+        font-family: 'Pretendard';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+
+
+        &::placeholder {
+            font-family: 'Pretendard';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+        }
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    textarea {
+        margin-top: 8px;
+        padding: 7px 0px;
+        height: 216px;
+        border: 1px solid #464646;
+        resize: none;
+    }
+
+    input {
+        margin-top: 4px;
+        text-indent: 8px;
+        border-bottom: 1px solid #464646;
+        padding: 0px;
+    }
+}
+
+.box {
+    margin: 10px auto;
+    padding: 30px 15px;
+    border: 1px solid black;
+}
