@@ -19,7 +19,7 @@ export default function Edit({ params }: { params: any }) {
                 date: new Date()
             })
         };
-        fetch('http://localhost:9999/boards/' + params.id, options)
+        fetch('http://localhost:9998/boards/' + params.id, options)
             .then(res => res.json())
             .then(result => {
                 setShowModal(false);
@@ -28,7 +28,7 @@ export default function Edit({ params }: { params: any }) {
     }
     const isReadyUpdate = useMemo(() => !!title.length && !!content.length, [title, content])
     useEffect(() => {
-        fetch(`http://localhost:9999/boards/${params.id}`).then(res => res.json()).then(result => {
+        fetch(`http://localhost:9998/boards/${params.id}`).then(res => res.json()).then(result => {
             setTitle(result.title)
             setContent(result.content)
         })

@@ -4,5 +4,8 @@ const nextConfig = {
     sassOptions: {
         includePaths: [path.join(__dirname, "public/styles")],
       },
+    experimental: {
+      appDir: true,
+    },
 }
 module.exports = nextConfig

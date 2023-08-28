@@ -29,7 +29,7 @@ export default function Add({ children }: { children: React.ReactNode }) {
     //             date: new Date()
     //         })
     //     };
-    //     fetch('http://localhost:9999/boards', options)
+    //     fetch('http://localhost:9998/boards', options)
     //         .then(res => res.json())
     //         .then(result => {
     //             setShowModal(false);
