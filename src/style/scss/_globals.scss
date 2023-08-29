@@ -1,0 +1,87 @@
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input,
+textarea {
+  width: 100%;
+  background: none;
+  border: none;
+  height: 40px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+
+
+  &::placeholder {
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+textarea {
+  margin-top: 8px;
+  padding: 7px 0px;
+  height: 216px;
+  border: 1px solid #464646;
+  resize: none;
+  padding: 7px 5px;
+  width: 622.4px;
+}
+
+input {
+  margin-top: 4px;
+  text-indent: 8px;
+  border-bottom: 1px solid #464646;
+  padding: 0px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 47px;
+  background: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  transition: 300ms;
+  //draggable 방지
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+ul {
+  padding: 0;
+}

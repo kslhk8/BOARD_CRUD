@@ -1,4 +1,4 @@
-.box {
+.modal-container {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -14,20 +14,16 @@
         background: none;
     }
 
-    & .guide {
-        padding: 24px 16px 16px 16px;
-
-        & .modalTitle {
-            padding-bottom: 16px;
-            color: #eeeeee;
-            font-style: normal;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 19px;
-        }
+    & .title {
+        padding: 24px 16px;
+        color: #eeeeee;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
     }
 
-    & .btn {
+    & .btn-wrapper {
         display: flex;
 
         & .close,
@@ -50,14 +46,4 @@
             color: #e73528
         }
     }
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 9;
 }
