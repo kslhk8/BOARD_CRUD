@@ -1,123 +1,46 @@
-import { fetchResponse } from './fetch'
-// interface ResultType {
-//   item: any;
-//   error: boolean;
-//   msg: string;
-//   cursor?: number | null;
-//   totalPage: number;
-//   totalCount: number;
-// }
+import axios, { AxiosPromise, AxiosResponse, AxiosError } from "axios"
+const serviceApi = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  withCredentials: false,
+  headers: {},
+  timeout: 60000,
+})
 
-export class ServiceAPI {
-    constructor(
-        private url: string,
-        private returnItem: string,
-        private payload?: any,
-    ) { }
-    async get() {
-        const result = await fetchResponse(this.url, {
-            method: 'GET',
-        })
-        return result;
-    }
+serviceApi.interceptors.request.use(
+  (config) => {
+    return config
+  },
+  (error: AxiosError) => {
+    return error
+  }
+)
 
-    async post() {
-        const result = await fetchResponse(this.url, {
-            method: 'POST',
-            body: JSON.stringify(this.payload),
-        })
-        return result;
-    }
+serviceApi.interceptors.response.use(
 
-    async put() {
-        const result = await axios({
-            method: 'put',
-            url: this.url,
-            data: this.payload,
-        })
-            .then((response) => {
-                return this.returnResponse(response);
-            })
-            .catch((error) => {
-                if (error.response.status === 404 || error.response.status === 0) {
-                    if (window.location.href !== `${process.env.REACT_APP_URL}server`) {
-                        window.location.href = `${process.env.REACT_APP_URL}server`;
-                    }
-                } else {
-                    toastMessage('failure', '오류가 발생하여 실패하였습니다.');
-                }
-                return this.returnError(error);
-            });
-        return result;
-    }
+  async (response) => {
+    return response
+  },
+  async (error: AxiosError) => {
+    console.log('error', error)
+    // response error
+    // 404
+    // go 404page
+    // 500
+    // go 500 page
+    // if (error.message === "Network Error") {
+    //   // router.push('/500')
+    //   window.location.href = '/maintainance'
+    // }
+    // if (error?.response?.status === 404) {
+    //   window.location.href = '/404'
 
-    async patch() {
-        const result = await axios({
-            method: 'patch',
-            url: this.url,
-            data: this.payload,
-        })
-            .then((response) => {
-                return this.returnResponse(response);
-            })
-            .catch((error) => {
-                if (error.response.status === 404 || error.response.status === 0) {
-                    if (window.location.href !== `${process.env.REACT_APP_URL}server`) {
-                        window.location.href = `${process.env.REACT_APP_URL}server`;
-                    }
-                } else {
-                    toastMessage('failure', '오류가 발생하여 실패하였습니다.');
-                }
-                return this.returnError(error);
-            });
-        return result;
-    }
-    async passwordPatch() {
-        const { token, ...item } = this.payload;
+    // }
 
-        const result = await axios({
-            method: 'patch',
-            url: this.url,
-            data: item,
-            headers: {
-                Authorization: 'Bearer ' + token,
-            },
-        })
-            .then((response) => {
-                return this.returnResponse(response);
-            })
-            .catch((error) => {
-                if (error.response.status === 404 || error.response.status === 0) {
-                    if (window.location.href !== `${process.env.REACT_APP_URL}server`) {
-                        window.location.href = `${process.env.REACT_APP_URL}server`;
-                    }
-                } else {
-                    toastMessage('failure', '오류가 발생하여 실패하였습니다.');
-                }
-                return this.returnError(error);
-            });
-        return result;
-    }
+    return error
+  }
+)
 
-    async delete() {
-        const result = await axios({
-            method: 'delete',
-            url: this.url,
-            data: this.payload,
-        })
-            .then((response) => {
-                return this.returnResponse(response);
-            })
-            .catch((error) => {
-                if (error.response.status === 404 || error.response.status === 0) {
-                    if (window.location.href !== `${process.env.REACT_APP_URL}server`) {
-                        window.location.href = `${process.env.REACT_APP_URL}server`;
-                    }
-                } else {
-                    toastMessage('failure', '오류가 발생하여 실패하였습니다.');
-                }
-                return this.returnError(error);
-            });
-        return result;
-    }
-}
+type serviceApiError = AxiosError
+
+export default serviceApi
+export type { AxiosPromise, AxiosResponse, serviceApiError }

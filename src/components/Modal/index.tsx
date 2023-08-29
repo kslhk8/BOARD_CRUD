@@ -1,4 +1,3 @@
-import styles from './modal.module.scss'
 interface ModalProps {
     title?: string;
     close?: string;
@@ -17,20 +16,18 @@ export default function Modal({
 }: ModalProps) {
     return (
         <>
-            <div className={styles.box}>
-                <div className={styles.guide}>
-                    <div className={styles.modalTitle}>{title}</div>
-                </div>
-                <div className={styles.btn}>
-                    <div onClick={onClose} className={styles.close}>
+            <div className="modal-container">
+                <div className="title">{title}</div>
+                <div className="btn-wrapper">
+                    <div onClick={onClose} className="close">
                         {close}
                     </div>
-                    <button onClick={onConfirm} className={styles.confirm}>
+                    <div onClick={onConfirm} className="confirm">
                         {confirm}
-                    </button>
+                    </div>
                 </div>
             </div>
-            <div className={styles.overlay} onClick={onClose} />
+            <div className="overlay" onClick={onClose} />
         </>
     );
 }

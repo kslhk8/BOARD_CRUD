@@ -1,35 +1,32 @@
-"use client";
+"use client"
 import Link from "next/link"
-import { useQuery } from "@tanstack/react-query";
-import styles from './list.module.scss'
-import { timeFromToday } from '~/helper/dateFormat'
-import { getBoards } from "~/api/board/getBoards";
-import { useGetItem } from "~/queries/useGetItem";
+import { timeFromToday } from "~/helper/dateFormat"
+import useGetItems, { BoardItemType } from "~/queries/useGetItems"
+import { BOARD_PATH_CONST } from "~/constants/pathConst"
+
 export default function Boards() {
-    // const { data } = useQuery({ queryKey: ["boards"], queryFn: getBoards, });
-    const { data } = useGetItem(["boards"], getBoards);
-    return (
-        <div className=''>
-            <div className={styles.item} key={1}>
-                <ul>
-                    {data?.map((v: any, idx: number) => (
-                        <Link
-                            href={
-                                `/board/detail/${v.id}`
-                            }
-                            key={v.id}
-                            className={styles.contentWrapper}
-                        >
-                            <li className={styles.post}>
-                                {v.title}
-                                <div className={styles.name}>
-                                    {timeFromToday(v.date)}
-                                </div>
-                            </li>
-                        </Link>
-                    ))}
-                </ul>
-            </div>
-        </div>
-    );
+  const { data: boardListData } = useGetItems()
+
+  return (
+    <div className="">
+      <div className='list-container' key={1}>
+        <ul>
+          {boardListData?.map((boardItem: BoardItemType, idx: number) => (
+            <Link
+              href={BOARD_PATH_CONST.BOARD_DETAIL(boardItem.id)}
+              key={boardItem.id}
+              className="content-wrapper"
+            >
+              <li className="content">
+                {boardItem.title}
+                <span>
+                  {timeFromToday(boardItem.date)}
+                </span>
+              </li>
+            </Link>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
 }

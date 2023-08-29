@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<!-- TODO: 리드미 정리 -->
+<!-- 1. 프로젝트 실행방법 -->
+<!-- 2. 스택 -->
+<!-- 3. 구현 기능 -->
+<!-- 4. 폴더 구조 -->
+<!-- 4. 페이지별 설명 -->
+
 ## Getting Started
 
 First, run the development server:

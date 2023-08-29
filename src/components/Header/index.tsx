@@ -1,11 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import styles from './header.module.scss';
 type Props = {};
 
 function Header({ }: Props) {
     return (
-        <nav className={styles.nav}>
+        <nav className="nav">
             <Link href="/">
                 Home
             </Link>
