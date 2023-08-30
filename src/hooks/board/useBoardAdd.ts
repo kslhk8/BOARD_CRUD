@@ -11,7 +11,7 @@ import usePostItem, { PostItemParamType } from "~/queries/usePostItem"
 interface IBoardAdd {
   title: string
   content: string
-  showModal: boolean
+  showAddConfirmModal: boolean
   isDataReady: boolean
   onChangeTitle: (event: any) => void
   onChangeContent: (event: any) => void
@@ -20,7 +20,7 @@ interface IBoardAdd {
 }
 const useBoardAdd = (): IBoardAdd => {
   const router = useRouter()
-  const [showModal, setShowModal] = useState(false)
+  const [showAddConfirmModal, setShowAddConfirmModal] = useState(false)
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const { mutateAsync: postItem } = usePostItem()
@@ -36,15 +36,15 @@ const useBoardAdd = (): IBoardAdd => {
   }, [])
 
   const onChangeModalState = useCallback(() => {
-    setShowModal(!showModal)
-  }, [showModal])
+    setShowAddConfirmModal(!showAddConfirmModal)
+  }, [showAddConfirmModal])
 
   const onPostItem = useCallback(
     async ({ title, content, date }: PostItemParamType) => {
       const { data } = await postItem({ title, content, date })
       console.log(data);
       // TODO:지역변수는 이 아래에서 만들기
-      setShowModal(false)
+      setShowAddConfirmModal(false)
       router.replace(BOARD_PATH_CONST.BOARD_DETAIL(data.id))
     },
     []
@@ -57,7 +57,7 @@ const useBoardAdd = (): IBoardAdd => {
   return {
     title,
     content,
-    showModal,
+    showAddConfirmModal,
     isDataReady,
     onChangeTitle,
     onChangeContent,

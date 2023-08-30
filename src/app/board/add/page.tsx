@@ -7,7 +7,7 @@ const Add: React.FC = () => {
     title,
     content,
     isDataReady,
-    showModal,
+    showAddConfirmModal,
     onChangeTitle,
     onChangeContent,
     onChangeModalState,
@@ -45,7 +45,7 @@ const Add: React.FC = () => {
           등록하기
         </button>
       </div>
-      {showModal && (
+      {showAddConfirmModal && (
         <Modal
           title="게시글을 등록하시겠습니까?"
           close="취소"

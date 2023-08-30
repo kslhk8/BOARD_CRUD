@@ -1,6 +1,6 @@
-import HydratedDetail from './hydratedDetail'
+import HydratedBoard from './hydratedBoard'
 export default function Page({ params }: { params: { id: number } }) {
     return (
-        <HydratedDetail params={params} />
+        <HydratedBoard params={params} />
     )
 }

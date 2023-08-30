@@ -8,7 +8,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-function GlobalProvider({ children }: Props) {
+const GlobalProvider = ({ children }: Props) => {
     const [client] = React.useState(
         new QueryClient({
             defaultOptions: {  // react-query 전역 설정

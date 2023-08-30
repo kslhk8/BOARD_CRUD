@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { redirect } from "next/dist/server/api-utils"
 import { useCallback } from "react"
 import { API_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
@@ -33,11 +34,9 @@ const requestApi = async (): Promise<ResponseType> =>
 
 export const queryFn = async () => {
   const { data, status } = await requestApi()
-
   if (!data) {
     return INIT_DATA
   }
-
   if (status !== 200) {
     return INIT_DATA
   }
@@ -50,8 +49,6 @@ const useGetItems = () => {
 
   const onError = useCallback(
     (error: serviceApiError) => {
-      console.log('erorr', error)
-      // 요기 예외처리
       queryClient.setQueryData([queryKey], INIT_DATA)
     },
     [queryClient, queryKey]

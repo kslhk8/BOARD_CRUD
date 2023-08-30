@@ -1,6 +1,6 @@
 const HEADER_CONST = Object.freeze({
-  CONTEXT_TYPE: "Content-Type",
-  APPIICATION_JSON: "application/json",
+  CONTENT_TYPE: "Content-Type",
+  APPLICATION_JSON: "application/json",
 })
 
 const CRUD_CONST = Object.freeze({

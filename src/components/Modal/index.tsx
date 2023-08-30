@@ -7,13 +7,13 @@ interface ModalProps {
 }
 
 
-export default function Modal({
+const Modal = ({
     title,
     close,
     confirm,
     onClose,
     onConfirm,
-}: ModalProps) {
+}: ModalProps) => {
     return (
         <>
             <div className="modal-container">
@@ -31,3 +31,4 @@ export default function Modal({
         </>
     );
 }
+export default Modal;

@@ -4,7 +4,7 @@ import { timeFromToday } from "~/helper/dateFormat"
 import useGetItems, { BoardItemType } from "~/queries/useGetItems"
 import { BOARD_PATH_CONST } from "~/constants/pathConst"
 
-export default function Boards() {
+const Boards: React.FC = () => {
   const { data: boardListData } = useGetItems()
 
   return (
@@ -30,3 +30,4 @@ export default function Boards() {
     </div>
   )
 }
+export default Boards

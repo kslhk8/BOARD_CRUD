@@ -1,21 +1,18 @@
 import Link from "next/link";
-import React from "react";
-type Props = {};
-
-function Header({ }: Props) {
+import React, { useState } from "react";
+import { BOARD_PATH_CONST, PATH_CONST } from "~/constants/pathConst";
+export default function Header() {
     return (
         <nav className="nav">
-            <Link href="/">
+            <Link href={PATH_CONST.HOME}>
                 Home
             </Link>
-            <Link href="/board/add" >
+            <Link href={BOARD_PATH_CONST.BOARD_ADD} >
                 BoardAdd
             </Link>
-            <Link href="/board/list" >
+            <Link href={BOARD_PATH_CONST.BOARD_LIST} >
                 BoardList
             </Link>
         </nav>
     );
 }
-
-export default Header;
