@@ -4,6 +4,7 @@ import Modal from '~/components/Modal'
 import { useRouter, useParams } from 'next/navigation';
 import useGetItem from '~/queries/useGetItem';
 import useDeleteItem from '~/queries/useDelteItem'
+import { toastMessage } from '~/components/Toast';
 const Board: React.FC = () => {
     const params = useParams();
     const router = useRouter();
@@ -15,6 +16,8 @@ const Board: React.FC = () => {
         async (id: number) => {
             await deleteItem(id)
             // TODO:지역변수는 이 아래에서 만들기
+            toastMessage('success', '게시글이 삭제됐습니다.');
+
             setShowDeleteConfirmModal(false);
             router.replace(`/board/list`)
         },

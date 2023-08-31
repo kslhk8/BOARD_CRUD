@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation"
 import React, { useCallback, useMemo, useState } from "react"
 import { BOARD_PATH_CONST, PATH_CONST } from "~/constants/pathConst"
 import usePostItem, { PostItemParamType } from "~/queries/usePostItem"
-
+import { toastMessage } from "~/components/Toast"
 /*
  * @property title 게시글 제목
  * @property content 게시글 내용
@@ -44,6 +44,7 @@ const useBoardAdd = (): IBoardAdd => {
       const { data } = await postItem({ title, content, date })
       console.log(data);
       // TODO:지역변수는 이 아래에서 만들기
+      toastMessage('success', '게시글이 등록됐습니다.');
       setShowAddConfirmModal(false)
       router.replace(BOARD_PATH_CONST.BOARD_DETAIL(data.id))
     },

@@ -4,6 +4,7 @@ import Modal from '~/components/Modal'
 import { useRouter, useParams } from 'next/navigation';
 import useGetItem from '~/queries/useGetItem';
 import useUpdateItem, { UpdateItemParamType } from '~/queries/useUpdateItem';
+import { toastMessage } from '~/components/Toast';
 const Edit: React.FC = () => {
     const params = useParams();
     //TODO prefetching Edit 초기데이터
@@ -15,6 +16,7 @@ const Edit: React.FC = () => {
     const { mutateAsync: updateItem } = useUpdateItem();
     const onUpdateItem = useCallback(async ({ title, content, date, id }: UpdateItemParamType) => {
         const { data } = await updateItem({ title, content, date, id });
+        toastMessage('success', '게시글 편집이 완료됐습니다.');
         setShowEditConfirmModal(false);
         router.replace(`/board/${data.id}`)
     }, [])

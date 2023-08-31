@@ -1,5 +1,6 @@
 import { useMutation } from "@tanstack/react-query"
 import { useCallback } from "react"
+import { toastMessage } from "~/components/Toast"
 import { API_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
 type ResponseDataType = {
@@ -31,8 +32,7 @@ const useUpdateItem = () => {
                 return data
             }, []),
             onError: useCallback((error: serviceApiError) => {
-                /* TODO: toast 예외처리 연결 */
-                console.error(error)
+                toastMessage('failure', '오류가 발생하여 실패하였습니다.');
             }, []),
         }
     )

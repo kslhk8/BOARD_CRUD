@@ -1,5 +1,6 @@
 import Header from "~/components/Header"
 import GlobalProvider from "~/components/GlobalProvider"
+import Toast from '~/components/Toast'
 import "~/style/root.scss"
 export const metadata = {
   title: "POST_CRUD",
@@ -23,6 +24,7 @@ export default function RootLayout({
         {/* {(!pathName.includes('maintainance') && !pathName.includes('not-found')) && <Header />} */}
         <Header />
         <GlobalProvider>{children}</GlobalProvider>
+        <Toast />
       </body>
     </html>
   )
