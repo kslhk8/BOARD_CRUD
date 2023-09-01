@@ -1,18 +1,12 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
-import { redirect } from "next/dist/server/api-utils"
 import { useCallback } from "react"
 import { API_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
 
-/* TODO: required, optional check */
-/*
- * BoardItemType
- * response data
- */
 type BoardItemType = {
   id: number
-  title?: string
-  content?: string
+  title: string
+  content: string
   date: string
 }
 

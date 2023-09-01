@@ -5,8 +5,6 @@ import { API_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
 
 const useDeleteItem = () => {
-    // toast hook
-    // 기타 전역변수 건드리는 hook
     return useMutation(
         async (id: number) =>
             serviceApi.delete(API_CONST.BOARD_DELETE(id)),

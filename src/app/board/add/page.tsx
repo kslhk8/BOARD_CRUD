@@ -4,12 +4,10 @@ import useBoardAdd from "~/hooks/board/useBoardAdd"
 
 const Add: React.FC = () => {
   const {
-    title,
-    content,
     isDataReady,
+    form,
+    onChange,
     showAddConfirmModal,
-    onChangeTitle,
-    onChangeContent,
     onChangeModalState,
     onPostItem,
   } = useBoardAdd()
@@ -24,9 +22,10 @@ const Add: React.FC = () => {
           <div className="sub-title">제목</div>
           <input
             type="text"
-            value={title}
+            name="title"
+            value={form.title}
             placeholder="제목을 입력해주세요"
-            onChange={onChangeTitle}
+            onChange={onChange}
           />
         </div>
         <div className="content-wrapper">
@@ -34,8 +33,9 @@ const Add: React.FC = () => {
             본문
           </div>
           <textarea
+            name="content"
             placeholder="음란물, 차별, 비하, 혐오 및 초상권, 저작권 침해 게시물은 민, 형사상의 책임을 질 수 있습니다."
-            onChange={onChangeContent}
+            onChange={onChange}
           ></textarea>
         </div>
         <button
@@ -51,7 +51,7 @@ const Add: React.FC = () => {
           close="취소"
           confirm="등록"
           onClose={onChangeModalState}
-          onConfirm={() => onPostItem({ title, content, date: new Date() + '' })}
+          onConfirm={() => onPostItem()}
         />
       )}
     </div>

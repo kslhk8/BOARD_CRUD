@@ -1,67 +1,56 @@
 import { useRouter } from "next/navigation"
-import React, { useCallback, useMemo, useState } from "react"
-import { BOARD_PATH_CONST, PATH_CONST } from "~/constants/pathConst"
-import usePostItem, { PostItemParamType } from "~/queries/usePostItem"
+import { ChangeEvent, useCallback, useMemo, useState } from "react"
+import { BOARD_PATH_CONST } from "~/constants/pathConst"
+import usePostItem from "~/queries/usePostItem"
 import { toastMessage } from "~/components/Toast"
+import useInput, { initialState, eventType } from '../input/useInput'
 /*
- * @property title 게시글 제목
- * @property content 게시글 내용
- * TODO: 주루루룩 다 적어
+ * @property showAddConfirmModal 등록 확인 모달
+ * @property isDataReady title과 content가 있는지 확인
+ * @property form {title, content}
+ * @property onChange title, content에 대한 onChange event
+ * @property onChangeModalState 등록 확인 모달의 onChange
+ * @property onPostItem 게시글 등록 function 
+ * 
+ * 
  */
 interface IBoardAdd {
-  title: string
-  content: string
   showAddConfirmModal: boolean
   isDataReady: boolean
-  onChangeTitle: (event: any) => void
-  onChangeContent: (event: any) => void
+  form: initialState
+  onChange: (event: eventType) => void
   onChangeModalState: () => void
-  onPostItem: (params: PostItemParamType) => void
+  onPostItem: () => void
 }
 const useBoardAdd = (): IBoardAdd => {
   const router = useRouter()
   const [showAddConfirmModal, setShowAddConfirmModal] = useState(false)
-  const [title, setTitle] = useState("")
-  const [content, setContent] = useState("")
   const { mutateAsync: postItem } = usePostItem()
-
-  // TODO(참고): input change custom hook
-  const onChangeTitle = useCallback((event: any) => {
-    setTitle(event.target.value)
-  }, [])
-
-  // TODO(참고): input change custom hook
-  const onChangeContent = useCallback((event: any) => {
-    setContent(event.target.value)
-  }, [])
-
+  const [form, onChange, reset] = useInput({ title: '', content: '' })
   const onChangeModalState = useCallback(() => {
     setShowAddConfirmModal(!showAddConfirmModal)
   }, [showAddConfirmModal])
 
   const onPostItem = useCallback(
-    async ({ title, content, date }: PostItemParamType) => {
-      const { data } = await postItem({ title, content, date })
-      console.log(data);
-      // TODO:지역변수는 이 아래에서 만들기
+    async () => {
+      console.log(form.title, form.content, 'check')
+      const { data } = await postItem({ title: form.title + '', content: form.content + '', date: new Date() + '' })
       toastMessage('success', '게시글이 등록됐습니다.');
       setShowAddConfirmModal(false)
       router.replace(BOARD_PATH_CONST.BOARD_DETAIL(data.id))
     },
-    []
+    [form.title, form.content]
   )
 
   const isDataReady = useMemo(
-    () => !!title.length && !!content.length,
-    [title.length, content.length]
+    () => !!form.title && !!form.content,
+    [form.title, form.content]
   )
   return {
-    title,
-    content,
     showAddConfirmModal,
     isDataReady,
-    onChangeTitle,
-    onChangeContent,
+    form,
+    onChange,
     onChangeModalState,
     onPostItem,
   }

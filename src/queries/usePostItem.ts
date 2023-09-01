@@ -13,8 +13,6 @@ type PostItemParamType = {
 }
 
 const usePostItem = () => {
-  // toast hook
-  // 기타 전역변수 건드리는 hook
   return useMutation(
     async (params: PostItemParamType) =>
       serviceApi.post(API_CONST.BOARD, params),

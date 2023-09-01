@@ -23,15 +23,10 @@ serviceApi.interceptors.response.use(
     return response
   },
   async (error: AxiosError) => {
-    console.log('reponse error', error, new Date().getTime())
-    // response error
-    // 404
-    // go 404page
-    // 500
-    // go 500 page
     if (error.message === "Network Error") {
       if (typeof window !== undefined) window.location.href = PATH_CONST.MAINTAINANCE
     }
+    // go 404page
     if (error?.response?.status === 404) {
       if (typeof window !== undefined) window.location.href = PATH_CONST.NOT_FOUND
     }

@@ -11,6 +11,7 @@ export default async function HydratedEdit({ params }: { params: { id: number } 
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery([API_CONST.BOARD_DETAIL(id)], () => queryFn(id))
   const getBoardItem = () => queryClient.getQueryData<BoardItemType>([API_CONST.BOARD_DETAIL(id)]);
+  //id가 없을 경우 redirect
   if (!getBoardItem()?.id) {
     redirect(BOARD_PATH_CONST.BOARD_LIST)
   }

@@ -19,8 +19,6 @@ type UpdateItemParamType = {
     id: number
 }
 const useUpdateItem = () => {
-    // toast hook
-    // 기타 전역변수 건드리는 hook
     return useMutation(
         async (params: UpdateItemParamType) =>
             serviceApi.patch(API_CONST.BOARD_UPDATE(params.id), params),
