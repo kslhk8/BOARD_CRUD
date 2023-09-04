@@ -8,17 +8,15 @@
     "plugin:prettier/recommended",
     "prettier/prettier",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    "plugin:react-hooks/recommended"
   ],
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2020
   },
   "rules": {
+    "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "no-unused-vars": [
       1,
@@ -30,16 +28,22 @@
     "react-hooks/exhaustive-deps": [
       "warn",
       {
-        "additionalHooks": "useRecoilCallback",
-      },
+        "additionalHooks": "useRecoilCallback"
+      }
     ],
     "@typescript-eslint/no-empty-interface": [
       "error",
       {
-        "allowSingleExtends": false,
-      },
+        "allowSingleExtends": false
+      }
     ],
     "react/prop-types": "off",
     "react/display-name": "off",
-  },
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
+  }
 }

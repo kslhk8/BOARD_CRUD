@@ -1,3 +1,6 @@
+import { redirect } from "next/navigation"
+import { BOARD_PATH_CONST } from "~/constants/pathConst"
+
 export default function Home() {
-  return <main className="main"></main>
+  redirect(BOARD_PATH_CONST.BOARD_LIST)
 }

@@ -1,49 +1,48 @@
 .modal-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 328px;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 10;
-    background: #111111;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 328px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 10;
+  background: #111111;
 
+  button {
+    border: none;
+    background: none;
+  }
 
-    button {
-        border: none;
-        background: none;
+  & .title {
+    padding: 24px 16px;
+    color: #eeeeee;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  & .btn-wrapper {
+    display: flex;
+
+    & .close,
+    & .confirm {
+      padding: 14px 0;
+      width: 50%;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+      border-top: 1px solid #464646;
+      cursor: pointer;
     }
 
-    & .title {
-        padding: 24px 16px;
-        color: #eeeeee;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 16px;
-        line-height: 19px;
+    & .close {
+      color: #eeeeee;
+      border-right: 1px solid #464646;
     }
 
-    & .btn-wrapper {
-        display: flex;
-
-        & .close,
-        & .confirm {
-            padding: 14px 0;
-            width: 50%;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 19px;
-            border-top: 1px solid #464646;
-            cursor: pointer;
-        }
-
-        & .close {
-            color: #eeeeee;
-            border-right: 1px solid #464646;
-        }
-
-        & .confirm {
-            color: #e73528
-        }
+    & .confirm {
+      color: #e73528;
     }
+  }
 }

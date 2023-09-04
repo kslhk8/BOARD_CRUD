@@ -1,50 +1,39 @@
 .toast-container {
+  min-width: 350px;
+  .Toastify__close-button {
+    > svg {
+      position: absolute;
+      right: 10px;
+      color: #eeeeee;
+    }
+
+    opacity: 1;
+  }
+
+  .Toastify__toast {
     min-width: 350px;
+    height: 50px;
 
-    .Toastify__close-button {
-        >svg {
-            color: #EEEEEE;
-        }
-
-        opacity: 1;
+    @media (max-width: 600px) {
+      width: calc(100% - 32px) !important;
+      margin: 0 auto 16px;
     }
 
-    .Toastify__toast {
-        min-width: 350px;
-        height: 50px;
+    max-width: auto;
+    background-color: #181818;
+    border: 1px solid #464646;
+  }
 
-        :last-child {
-            margin-bottom: 70px;
+  .Toastify__toast-body {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 15px;
+    color: #eeeeee;
+  }
 
-            @media (max-width: 800px) {
-                margin-bottom: 114px;
-            }
-
-            @media (max-width: 600px) {
-                margin-bottom: 16px !important;
-            }
-        }
-
-        @media (max-width: 600px) {
-            width: calc(100% - 32px) !important;
-            margin: 0 auto 16px;
-        }
-
-        max-width: auto;
-        background-color: #181818;
-        border: 1px solid #464646
-    }
-
-    .Toastify__toast-body {
-        display: flex;
-        white-space: nowrap;
-        align-items: center;
-        font-weight: 300;
-        font-size: 15px;
-        line-height: 15px;
-        color: #EEEEEE;
-    }
-
-    /* .Toastify__progress-bar {
+  /* .Toastify__progress-bar {
   } */
 }

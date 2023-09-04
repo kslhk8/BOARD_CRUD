@@ -1,14 +1,24 @@
+/**
+ * request headers option
+ */
 const HEADER_CONST = Object.freeze({
   CONTENT_TYPE: "Content-Type",
   APPLICATION_JSON: "application/json",
 })
-
+/**
+ * HTTP method
+ */
 const CRUD_CONST = Object.freeze({
   GET: "get",
   POST: "post",
 })
-
-// api 주소
+/**
+ * api address
+ * @property BOARD 게시글 목록
+ * @property BOARD_DETAIL 게시글 상세
+ * @property BOARD_DELETE 게시글 삭제
+ * @property BOARD_UPDATE 게시글 편집
+ */
 const API_CONST = Object.freeze({
   BOARD: "/boards",
   BOARD_DETAIL: (id: number) => `${API_CONST.BOARD}/${id}`,
