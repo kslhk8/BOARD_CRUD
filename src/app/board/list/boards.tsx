@@ -5,11 +5,17 @@ import { timeFromToday } from "~/helper/dateFormat"
 import useGetItems, { BoardItemType } from "~/queries/useGetItems"
 import { BOARD_PATH_CONST } from "~/constants/pathConst"
 import PaginationItem from "~/components/Pagination"
+import { useSearchParams, useRouter } from "next/navigation"
 const Boards: React.FC = () => {
-  const [page, setPage] = useState(1)
-  const { data: boardListItem } = useGetItems(page)
+  const searchParams = useSearchParams()
+  const [page, setPage] = useState(Number(searchParams.get("page")) || 1)
+  const router = useRouter()
+  const { data: boardListItem } = useGetItems(
+    Number(searchParams.get("page")) || page
+  )
   const { totalPage, data: boardListData } = boardListItem
   const onChangePage = (event: React.ChangeEvent<unknown>, page: number) => {
+    router.push(`?page=${page}`)
     setPage(page)
   }
   return (

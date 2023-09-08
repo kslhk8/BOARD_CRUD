@@ -3,7 +3,7 @@ import { AxiosHeaders } from "axios"
 import { useCallback, useMemo } from "react"
 import { API_CONST, PAGINATION_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
-
+import { useSearchParams } from "next/navigation"
 type BoardItemType = {
   id: number
   title: string
@@ -39,7 +39,6 @@ export const queryFn = async (page: number) => {
       ) || 0,
     data,
   }
-  console.log("item", item)
   if (!data) {
     return INIT_DATA
   }
