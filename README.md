@@ -1,7 +1,8 @@
 # BOARD_CRUD
 
 ---
-<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white">  <img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=React Query&logoColor=white">  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
+
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white"> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white"> <img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=React Query&logoColor=white"> <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=Sass&logoColor=white">
 
 Nextjs 13 + React Query Simple Board_CRUD
 
@@ -48,6 +49,7 @@ yarn start:local
     │  ├─Header
     │  ├─Loader
     │  ├─Modal
+    │  ├─Pagination
     │  └─Toast
     ├─constants
     ├─helper
@@ -88,6 +90,7 @@ yarn start:local
   - 불러온 데이터의 타이틀, helpers 폴더 내의 `timeFromToday` 포맷팅 함수를 사용하여 게시글 목록을 렌더한다.
   - 게시글 데이터가 없을 경우 noData 리스트를 렌더한다.
   - 게시글 등록 페이지로 이동할 수 있다.
+  - 페이지 숫자 버튼 클릭을 통해 다른 페이지의 게시글을 볼 수 있다.
 
 - **게시글 등록** (/board/add)
 
