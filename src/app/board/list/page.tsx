@@ -6,10 +6,10 @@ import { queryFn } from "~/queries/useGetItems"
 
 export default async function HydratedBoards() {
   const queryClient = getQueryClient()
-  const queryKey = [API_CONST.BOARD]
+  const queryKey = [API_CONST.BOARD, 1]
   await queryClient.prefetchQuery({
     queryKey: queryKey,
-    queryFn: queryFn,
+    queryFn: () => queryFn(1),
   })
   const dehydratedState = dehydrate(queryClient)
 

@@ -13,6 +13,13 @@ const CRUD_CONST = Object.freeze({
   POST: "post",
 })
 /**
+ * pagination const
+ * limit: page당 보여질 개수
+ */
+const PAGINATION_CONST = Object.freeze({
+  LIMIT: 5,
+})
+/**
  * api address
  * @property BOARD 게시글 목록
  * @property BOARD_DETAIL 게시글 상세
@@ -26,4 +33,4 @@ const API_CONST = Object.freeze({
   BOARD_UPDATE: (id: number) => `${API_CONST.BOARD}/${id}`,
 })
 
-export { HEADER_CONST, CRUD_CONST, API_CONST }
+export { HEADER_CONST, CRUD_CONST, API_CONST, PAGINATION_CONST }

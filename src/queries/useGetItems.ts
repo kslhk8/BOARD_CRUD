@@ -1,6 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query"
+import { AxiosHeaders } from "axios"
 import { useCallback, useMemo } from "react"
-import { API_CONST } from "~/constants/apiConst"
+import { API_CONST, PAGINATION_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
 
 type BoardItemType = {
@@ -10,34 +11,47 @@ type BoardItemType = {
   date: string
 }
 /** API 응답 타입 */
-type ResponseType = { status: number } & {
+type ResponseType = { headers: AxiosHeaders } & { status: number } & {
   data: BoardItemType[]
 }
 /** API 응답 데이터 타입 */
-type ResponseDataType = BoardItemType[]
+type ResponseDataType = {
+  totalPage: number
+  data: BoardItemType[]
+}
 /** 게시판 목록 기초 데이터 */
-const INIT_DATA = <BoardItemType[]>[]
+const INIT_DATA = { totalPage: 0, data: <BoardItemType[]>[] }
 /** 게시판 목록 조회용 호출기 */
-const requestApi = async (): Promise<ResponseType> =>
-  serviceApi.get(API_CONST.BOARD)
+const requestApi = async (page: number): Promise<ResponseType> =>
+  serviceApi.get(
+    `${API_CONST.BOARD}?_page=${page}&_limit=${PAGINATION_CONST.LIMIT}`
+  )
 /**
  * 게시판 목록 조회 후 데이터 반환기
  * @returns {BoardItemType[]} 조회된 게시판 목록 정보
  */
-export const queryFn = async () => {
-  const { data, status } = await requestApi()
+export const queryFn = async (page: number) => {
+  const { headers, status, data } = await requestApi(page)
+  const item = {
+    totalPage:
+      Math.ceil(
+        Number(headers.get("X-Total-Count")) / PAGINATION_CONST.LIMIT
+      ) || 0,
+    data,
+  }
+  console.log("item", item)
   if (!data) {
     return INIT_DATA
   }
   if (status !== 200) {
     return INIT_DATA
   }
-  return data
+  return item
 }
 
-const useGetItems = () => {
+const useGetItems = (page: number) => {
   const queryClient = useQueryClient()
-  const queryKey = useMemo(() => [API_CONST.BOARD], [])
+  const queryKey = useMemo(() => [API_CONST.BOARD, page], [page])
 
   const onError = useCallback(
     (error: serviceApiError) => {
@@ -46,13 +60,17 @@ const useGetItems = () => {
     },
     [queryClient, queryKey]
   )
-  return useQuery<ResponseDataType, serviceApiError>(queryKey, queryFn, {
-    enabled: !!queryKey,
-    refetchOnWindowFocus: false,
-    placeholderData: INIT_DATA,
-    initialData: INIT_DATA,
-    onError,
-  })
+  return useQuery<ResponseDataType, serviceApiError>(
+    queryKey,
+    () => queryFn(page),
+    {
+      enabled: !!queryKey,
+      refetchOnWindowFocus: false,
+      placeholderData: INIT_DATA,
+      initialData: INIT_DATA,
+      onError,
+    }
+  )
 }
 
 export default useGetItems

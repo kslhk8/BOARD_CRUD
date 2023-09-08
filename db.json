@@ -5,6 +5,36 @@
       "content": "반가워요",
       "date": "Mon Sep 04 2023 14:47:30 GMT+0900 (한국 표준시)",
       "id": 1
+    },
+    {
+      "title": "Test",
+      "content": "Test",
+      "date": "Fri Sep 08 2023 16:42:54 GMT+0900 (한국 표준시)",
+      "id": 3
+    },
+    {
+      "title": "반갑습니다.",
+      "content": "반갑습니다.",
+      "date": "Fri Sep 08 2023 16:43:08 GMT+0900 (한국 표준시)",
+      "id": 4
+    },
+    {
+      "title": "Next.js",
+      "content": "Next.js",
+      "date": "Fri Sep 08 2023 16:43:24 GMT+0900 (한국 표준시)",
+      "id": 5
+    },
+    {
+      "title": "게시글",
+      "content": "게시글",
+      "date": "Fri Sep 08 2023 16:43:36 GMT+0900 (한국 표준시)",
+      "id": 6
+    },
+    {
+      "title": "안녕하세요.",
+      "content": "안녕하세요.",
+      "date": "Fri Sep 08 2023 16:43:52 GMT+0900 (한국 표준시)",
+      "id": 7
     }
   ]
 }
