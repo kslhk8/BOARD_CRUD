@@ -21,12 +21,16 @@ const PAGINATION_CONST = Object.freeze({
 })
 /**
  * api address
+ * @property LOGIN 로그인
+ * @property REGISTER 회원가입
  * @property BOARD 게시글 목록
  * @property BOARD_DETAIL 게시글 상세
  * @property BOARD_DELETE 게시글 삭제
  * @property BOARD_UPDATE 게시글 편집
  */
 const API_CONST = Object.freeze({
+  LOGIN: "/login",
+  REGISTER: "/register",
   BOARD: "/boards",
   BOARD_DETAIL: (id: number) => `${API_CONST.BOARD}/${id}`,
   BOARD_DELETE: (id: number) => `${API_CONST.BOARD}/${id}`,

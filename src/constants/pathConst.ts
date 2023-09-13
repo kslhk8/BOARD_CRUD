@@ -7,6 +7,8 @@
  */
 const PATH_CONST = Object.freeze({
   HOME: "/",
+  LOGIN: "/login",
+  REGISTER: "/register",
   BOARD: "/board",
   NOT_FOUND: "/not-found",
   MAINTAINANCE: "/maintainance",

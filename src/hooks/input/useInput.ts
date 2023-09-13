@@ -4,7 +4,14 @@ import { useState, useCallback, ChangeEvent } from "react"
  * @property {title} 게시글 타이틀
  * @property {content} 게시글 내용
  */
-type initialState = { title?: string; content?: string }
+type initialState = {
+  title?: string
+  content?: string
+}
+type signState = {
+  email?: string
+  password?: string
+}
 
 type eventType = ChangeEvent<HTMLInputElement> &
   ChangeEvent<HTMLTextAreaElement>
@@ -16,8 +23,8 @@ type eventType = ChangeEvent<HTMLInputElement> &
  * @property reset input값 초기화
  */
 function useInput(
-  initialForm: initialState
-): [initialState, (e: eventType) => void, () => void] {
+  initialForm: initialState & signState
+): [initialState & signState, (e: eventType) => void, () => void] {
   const [form, setForm] = useState(initialForm)
   const onChange = useCallback((event: eventType) => {
     const { name, value } = event.target
