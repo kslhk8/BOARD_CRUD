@@ -1,10 +1,12 @@
 import { useParams, useRouter } from "next/navigation"
-import { useCallback, useState } from "react"
+import { useCallback, useMemo, useState } from "react"
 import { toastMessage } from "~/components/Toast"
 import { initialState } from "../input/useInput"
 import useGetItem from "~/queries/useGetItem"
 import useDeleteItem from "~/queries/useDelteItem"
 import { BOARD_PATH_CONST } from "~/constants/pathConst"
+import { useCookies } from "react-cookie"
+import { parseJwt } from "~/helper/parseJwt"
 
 interface IBoard {
   showDeleteConfirmModal: boolean
@@ -13,6 +15,7 @@ interface IBoard {
   onDeleteItem: () => void
   onMoveEdit: () => void
   onMoveList: () => void
+  isWriter: boolean
 }
 /**
  * @property showDeleteConfirmModal 삭제 확인 모달
@@ -23,6 +26,9 @@ interface IBoard {
  * @property onMoveList 리스트로 이동
  */
 const useBoard = (): IBoard => {
+  const [cookies] = useCookies()
+  const token = cookies.accessToken
+  const { sub: userId } = parseJwt(token)
   const router = useRouter()
   const params = useParams()
   const { data: boardData } = useGetItem(Number(params.id))
@@ -45,7 +51,10 @@ const useBoard = (): IBoard => {
   const onMoveList = useCallback(() => {
     router.replace(BOARD_PATH_CONST.BOARD_LIST)
   }, [router])
-
+  const isWriter = useMemo(
+    () => userId === boardData.userId,
+    [userId, boardData.userId]
+  )
   return {
     showDeleteConfirmModal,
     boardData,
@@ -53,6 +62,7 @@ const useBoard = (): IBoard => {
     onDeleteItem,
     onMoveEdit,
     onMoveList,
+    isWriter,
   }
 }
 

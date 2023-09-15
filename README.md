@@ -24,6 +24,7 @@ yarn start:local
 - React Query
 - SCSS
 - react-toastify
+- json-server-auth
 
 ## 구현 기능
 
@@ -32,6 +33,7 @@ yarn start:local
 - react-query 라이브러리 사용
   - prefetch 적용 및 data 값이 없을 경우 예외처리
     - 게시글이 없을 때는 게시판 목록으로 리다이렉트 한다.
+- json-server-auth를 이용한 로그인, 회원가입 구현
 
 ## 폴더구조
 
@@ -45,6 +47,8 @@ yarn start:local
     │  │  ├─list
     │  │  └─[id]
     │  └─maintainance
+    │  ├─login
+    │  ├─register
     ├─components
     │  ├─Header
     │  ├─Loader
@@ -59,6 +63,9 @@ yarn start:local
     │  │  ├─useBoardAdd.ts
     │  │  ├─useBoardEdit.ts
     │  └─input
+    │  └─sign
+    │  │  ├─useLogin.ts
+    │  │  ├─useRegister.ts
     ├─public
     ├─queries
     │  ├─useDeleteItem.ts
@@ -74,6 +81,7 @@ yarn start:local
                 └─_header.scss
                 └─_loader.scss
                 └─_modal.scss
+                └─_sign.scss
                 └─_toast.scss
             └─_base.scss
             └─_global.scss
@@ -82,6 +90,26 @@ yarn start:local
 ```
 
 ## 각 페이지별 기능 정의
+
+- ## **공통(Header)**
+
+  - 로그인 돼있을 때 로그아웃 버튼 클릭 시 로그아웃 되면서 로그인(/login) 페이지로 이동한다.
+  - Board CRUD 클릭 시 게시글 목록(/board/list)으로 이동한다.
+
+- ## **로그인** (/login)
+
+  - email과 비밀번호를 입력함으로 로그인 할 수 있다.
+    - 비밀번호 또는 아이디가 일치하지 않을 경우 react-toastify 라이브러리를 활용한 공통 컴포넌트 `Toast`를 활용한 알림을 띄운다.
+  - input 태그의 경우 `useInput` 공통 custom hook을 통해 핸들링된다.
+  - 회원가입 버튼 클릭 시 회원가입 페이지로 이동한다.
+  - 완료 후 게시글 목록(/board/list) 페이지로 이동한다.
+
+- ## **회원가입** (/register)
+
+  - email과 비밀번호를 입력함으로 회원가입 할 수 있다.
+  - 회원가입 버튼의 상태는 disabled이며, 필수값인 email과 비밀번호가 입력되어야 활성화된다.
+  - input 태그의 경우 `useInput` 공통 custom hook을 통해 핸들링된다.
+  - 완료 후 로그인(/login) 페이지로 이동하며, 알림 메시지를 띄운다.
 
 - **게시글 목록** (/board/list)
 

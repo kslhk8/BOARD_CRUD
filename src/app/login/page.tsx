@@ -1,37 +1,8 @@
 "use client"
-import { Button, TextField } from "@mui/material"
-import useInput from "~/hooks/input/useInput"
-import { useRouter } from "next/navigation"
-import { BOARD_PATH_CONST } from "~/constants/pathConst"
-import { API_CONST } from "~/constants/apiConst"
-import serviceApi from "~/helper/serviceApi"
-import { toastMessage } from "~/components/Toast"
+import { TextField } from "@mui/material"
+import useLogin from "~/hooks/sign/useLogin"
 const Login = () => {
-  const router = useRouter()
-  if (typeof window !== "undefined") {
-    const token = localStorage.getItem("token")
-    if (token) {
-      router.replace(BOARD_PATH_CONST.BOARD_LIST)
-    }
-  }
-
-  const [form, onChange] = useInput({ email: "", password: "" })
-
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const loginData = {
-      email: form.email,
-      password: form.password,
-    }
-    const result: any = await serviceApi.post(API_CONST.LOGIN, loginData)
-    console.log(result)
-    if (result?.response?.status === 400) {
-      toastMessage("failure", result?.response?.data)
-    } else {
-      localStorage.setItem("token", result?.data?.accessToken)
-      router.push(BOARD_PATH_CONST.BOARD_LIST)
-    }
-  }
+  const { form, onChange, onSubmit, onClickRegister } = useLogin()
   return (
     <div className="root">
       <div className="title">BOARD_CRUD 로그인</div>
@@ -57,10 +28,9 @@ const Login = () => {
           value={form.password}
           onChange={onChange}
         />
-        <Button variant="contained" type="submit">
-          로그인
-        </Button>
+        <button type="submit">로그인</button>
       </form>
+      <button onClick={onClickRegister}>회원가입</button>
     </div>
   )
 }

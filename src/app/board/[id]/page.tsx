@@ -21,8 +21,9 @@ export default async function HydratedBoard({
   })
   const getBoardItem = () =>
     queryClient.getQueryData<BoardItemType>([API_CONST.BOARD_DETAIL(id)])
+  console.log("getBoardItem", getBoardItem())
   if (!getBoardItem()?.id) {
-    redirect(BOARD_PATH_CONST.BOARD_LIST)
+    // redirect(BOARD_PATH_CONST.BOARD_LIST)
   }
   const dehydratedState = dehydrate(queryClient)
   return (

@@ -19,8 +19,9 @@ export default async function HydratedEdit({
   const getBoardItem = () =>
     queryClient.getQueryData<BoardItemType>([API_CONST.BOARD_DETAIL(id)])
   //id가 없을 경우 redirect
+  console.log("getBoardItem", getBoardItem())
   if (!getBoardItem()?.id) {
-    redirect(BOARD_PATH_CONST.BOARD_LIST)
+    // redirect(BOARD_PATH_CONST.BOARD_LIST)
   }
   const dehydratedState = dehydrate(queryClient)
   return (

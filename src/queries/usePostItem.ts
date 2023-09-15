@@ -9,6 +9,7 @@ type ResponseDataType = {
   content: string
   id: number
   date: string
+  userId: string
 }
 /** API 응답 타입 */
 type ResponseType = { status: number } & { data: ResponseDataType }
@@ -17,6 +18,7 @@ type PostItemParamType = {
   title: string
   content: string
   date: string
+  userId: string
 }
 /** 게시글 등록 호출기 */
 const requestApi = async (params: PostItemParamType): Promise<ResponseType> =>

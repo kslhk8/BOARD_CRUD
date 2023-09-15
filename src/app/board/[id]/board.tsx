@@ -10,6 +10,7 @@ const Board: React.FC = () => {
     onDeleteItem,
     onMoveEdit,
     onMoveList,
+    isWriter,
   } = useBoard()
   return (
     <>
@@ -22,10 +23,12 @@ const Board: React.FC = () => {
           <div className="title-value">{boardData?.title}</div>
           <div className="content">본문</div>
           <div className="content-value">{boardData?.content}</div>
-          <div className="btn-wrapper">
-            <button onClick={onMoveEdit}>편집</button>
-            <button onClick={onChangeModalState}>삭제</button>
-          </div>
+          {isWriter && (
+            <div className="btn-wrapper">
+              <button onClick={onMoveEdit}>편집</button>
+              <button onClick={onChangeModalState}>삭제</button>
+            </div>
+          )}
         </div>
       </div>
       {showDeleteConfirmModal && (

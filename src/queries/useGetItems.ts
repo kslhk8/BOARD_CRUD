@@ -3,12 +3,12 @@ import { AxiosHeaders } from "axios"
 import { useCallback, useMemo } from "react"
 import { API_CONST, PAGINATION_CONST } from "~/constants/apiConst"
 import serviceApi, { serviceApiError } from "~/helper/serviceApi"
-import { useSearchParams } from "next/navigation"
 type BoardItemType = {
   id: number
   title: string
   content: string
   date: string
+  userId: string
 }
 /** API 응답 타입 */
 type ResponseType = { headers: AxiosHeaders } & { status: number } & {

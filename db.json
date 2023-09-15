@@ -1,10 +1,25 @@
 {
   "boards": [
     {
-      "title": "Test",
+      "title": "test1",
       "content": "test",
-      "date": "Wed Sep 13 2023 18:51:54 GMT+0900 (한국 표준시)",
+      "date": "Fri Sep 15 2023 18:59:28 GMT+0900 (한국 표준시)",
+      "userId": "1",
       "id": 1
+    },
+    {
+      "title": "test2",
+      "content": "test2",
+      "date": "Fri Sep 15 2023 16:10:20 GMT+0900 (한국 표준시)",
+      "userId": "1",
+      "id": 2
+    },
+    {
+      "title": "example",
+      "content": "example",
+      "date": "Fri Sep 15 2023 19:08:08 GMT+0900 (한국 표준시)",
+      "userId": "2",
+      "id": 3
     }
   ],
   "users": [
@@ -12,6 +27,16 @@
       "email": "example@gmail.com",
       "password": "$2a$10$dMKhsawD5ntlth8ySXINpOL8O88ndBfpMd9DLB.8bSWsxxJgJzY.a",
       "id": 1
+    },
+    {
+      "email": "example2@gmail.com",
+      "password": "$2a$10$XNyY.lKJHyyR3nEIqJ/MweqB9aGC6b2o4mRiMIUbnTRhsPk1t6t9q",
+      "id": 2
+    },
+    {
+      "email": "example3@gmail.com",
+      "password": "$2a$10$VmzjNldAmGR0cHyBSdoEwepXCLGtOBIAlrmSBzEYzJBh9JtgQ2tWi",
+      "id": 3
     }
   ]
 }
